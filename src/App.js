@@ -1,25 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
+import GameTable from './components/game';
+import { useState } from "react";
+import staticGameData from "./static/gamedata.json"
+import Question from './components/question';
+import AuctionWarning from "./components/auctionWarning";
 
 function App() {
+  const [gameData, setGameData] = useState(staticGameData)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App flex">
+      <AuctionWarning />
+      <Question />
+      <GameTable gameData={gameData} gamers={["Саша", "Артем", "Семен", "Настя", "Дима", "Ольга"]} round={3}/>
     </div>
   );
 }
+
 
 export default App;
